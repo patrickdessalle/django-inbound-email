@@ -37,7 +37,7 @@ class MailgunRequestParser(RequestParser):
                 request.POST.get('stripped-signature', '')
             )
             html = request.POST.get('stripped-html')
-            from_email = request.POST.get('sender')
+            from_email = request.POST.get('from')
             to_email = request.POST.get('recipient').split(',')
             cc = request.POST.get('cc', '').split(',')
             bcc = request.POST.get('bcc', '').split(',')
