@@ -25,10 +25,10 @@ def _log_request(request):
     logger.debug("Inbound email received")
 
     for k, v in list(request.POST.items()):
-        logger.debug(u"- POST['%s']='%s'" % (k, v))
+        logger.debug("- POST['%s']='%s'" % (k, v))
 
     for n, f in list(request.FILES.items()):
-        logger.debug(u"- FILES['%s']: '%s', %sB", n, f.content_type, f.size)
+        logger.debug("- FILES['%s']: '%s', %sB", n, f.content_type, f.size)
 
 
 @require_http_methods(["HEAD", "POST"])
