@@ -41,6 +41,7 @@ class MailgunRequestParser(RequestParser):
             to_email = request.POST.get('recipient').split(',')
             cc = request.POST.get('cc', '').split(',')
             bcc = request.POST.get('bcc', '').split(',')
+            headers = {t[0]:t[1] for t in request.POST.get('headers', '')}
 
         except MultiValueDictKeyError as ex:
             raise RequestParseError(
@@ -59,6 +60,7 @@ class MailgunRequestParser(RequestParser):
             to=to_email,
             cc=cc,
             bcc=bcc,
+            headers=headers,
         )
         if html is not None and len(html) > 0:
             email.attach_alternative(html, "text/html")
